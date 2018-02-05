@@ -6,7 +6,7 @@ module.exports = [
     {
         id: "manage", icon: "user", name: "文章管理", children:[
             {
-                id: "manage_01", pid:"manage", name: "文章列表", route: "articleList"
+                id: "manage_01", pid:"manage", name: "文章列表", route: "/articleList"
             },
         ]
     }, 
@@ -14,7 +14,7 @@ module.exports = [
     {
         id: "dashboard", icon: "user", name: "主页管理", children:[
             {
-                id: "dashboard_01", pid:"dashboard",name: "轮播图管理", route: "bannerManage"
+                id: "dashboard_01", pid:"dashboard",name: "轮播图管理", route: "/bannerManage"
             },
         ]
     }, 
@@ -22,7 +22,7 @@ module.exports = [
     {
         id: "userManage", icon: "user", name: "用户管理", children:[
             {
-                id: "userManage_01",pid:"userManage", name: "站内成员", route: "member"
+                id: "userManage_01",pid:"userManage", name: "站内成员", route: "/member"
             },
         ]
     },

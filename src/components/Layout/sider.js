@@ -1,5 +1,6 @@
 import { Menu, Icon } from 'antd';
-import Menus from "../../menu"
+import Menus from "../../menu";
+import { Link } from 'react-router-dom'
 
 const Siders = () => {
 
@@ -31,10 +32,10 @@ const Siders = () => {
             menuItem.id = item.id;
             menuItem.name = item.name;
             menuItem.icon = item.icon;
-            if (item.children && item.children.length>0) {
+            if (item.children && item.children.length > 0) {
                 menuItem.children = [];
-                item.children.map((item,key)=>{
-                    menuItem.children.push({id:item.id,name:item.name,route:item.route})
+                item.children.map((item, key) => {
+                    menuItem.children.push({ id: item.id, name: item.name, route: item.route })
                 })
             }
             tree.push(menuItem);
@@ -47,13 +48,15 @@ const Siders = () => {
             <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
                 {
                     menu.map((item, key) => {
-                        if (item.children ) {
+                        if (item.children) {
                             return (
                                 <Menu.SubMenu key={item.id} title={<span><Icon type={item.icon} /><span>{item.name}</span></span>}>
                                     {item.children.map(itemB => {
                                         return (
                                             <Menu.Item key={itemB.id}>
-                                                <span>{itemB.name}</span>
+                                                <Link to={{pathname:itemB.route}}>
+                                                    <span>{itemB.name}</span>
+                                                </Link>
                                             </Menu.Item>
                                         )
                                     })}
@@ -62,7 +65,9 @@ const Siders = () => {
                         } else {
                             return (
                                 <Menu.Item key={item.id}>
-                                    {<span><Icon type={item.icon}/><span>{item.name}</span></span>}
+                                    <Link to={{pathname:item.route}}>
+                                        {<span><Icon type={item.icon} /><span>{item.name}</span></span>}
+                                    </Link>
                                 </Menu.Item>
                             )
                         }

@@ -3,12 +3,16 @@ import { Layout, Menu, Breadcrumb, Icon } from 'antd';
 import { type } from 'os';
 import Siders from '../components/Layout/sider'
 import styles from "./app.css"
+import { withRouter } from 'dva/router'
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
 
 
 
-const App = ({ children, dispatch, app, loading, location }) => {
+const App = ({children, dispatch, app, loading, location, match}) => {
+
+    console.log(location);
+    console.log(match);
 
     const { collapsed } = app;
     function toggle(){
@@ -40,6 +44,8 @@ const App = ({ children, dispatch, app, loading, location }) => {
                     />
                 </Header>
 
+                <Breadcrumb/>
+
 
                 <Content style={{ margin: '24px 16px', padding: 24, background: '#fff', minHeight: 280 }}>
                     {children}
@@ -52,4 +58,4 @@ const App = ({ children, dispatch, app, loading, location }) => {
 }
 
 
-export default connect(({ app, loading }) => ({ app, loading }))(App)
+export default withRouter(connect(({ app, loading }) => ({ app, loading }))(App))

@@ -15,10 +15,18 @@ function RouterConfig({ history, app }) {
 
   const routes = [
     {
-      path: '/products',
+      path: '/articleList',
       models: () => [import('./models/products.js')],
       component: () => import('./routes/Products.js')
-    }
+    },{
+      path: '/bannerManage',
+      models: () => [import('./models/products.js')],
+      component: () => import('./routes/Products.1.js')
+    },{
+      path: '/member',
+      models: () => [import('./models/products.js')],
+      component: () => import('./routes/Products.2.js')
+    },
   ]
 
   return (
